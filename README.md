@@ -14,16 +14,24 @@ You have estimated it takes 4 weeks to build this solution. You have 3 days. Goo
 ## Technical documentation
 ### Data and Domain model
 In this section, please describe the main entities you managed to identify, the relationships between them and how you mapped them in the database.
+
+For the implementation of the solution I chose to create four tables in the database: admins, programmes, bookings and rooms. There is a one to many relationship between the rooms table and the programmes table, so the programmes table contains a foreign roomID key.
+There is a one-to-many relationship between the bookings table and the programmes table, because more users can register for each program. Thus, in the bookings table we can find the person's CNP and programmeID.
+
+In the admins table we find a list of admins, each with a random token in the random_token field so that the application knows if the request was sent by an admin or not.
+
 ### Application architecture
 In this section, please provide a brief overview of the design of your application and highlight the main components and the interaction between them.
+
+The application was made using the CakePHP framework, thus having an MVC structure.
 ###  Implementation
 ##### Functionalities
 For each of the following functionalities, please tick the box if you implemented it and describe its input and output in your application:
 
 [x] Brew coffee \
-[ ] Create programme \
-[ ] Delete programme \
-[ ] Book a programme 
+[x] Create programme \
+[x] Delete programme \
+[x] Book a programme 
 
 ##### Business rules
 Please highlight all the validations and mechanisms you identified as necessary in order to avoid inconsistent states and apply the business logic in your application.
@@ -35,14 +43,17 @@ Please give a brief review of the 3rd party libraries you used and how/ why you'
 Please fill in the following table with the technologies you used in order to work at your application. Feel free to add more rows if you want us to know about anything else you used.
 | Name | Choice |
 | ------ | ------ |
-| Operating system (OS) | e.g. Ubuntu 20.04 |
-| Database  | e.g. MySQL 8.0|
-| Web server| e.g. Nginx |
-| PHP | e.g. 7.0 |
-| IDE | e.g. PhpStorm |
+| Operating system (OS) | e.g. macOS Big Sur|
+| Database  | e.g. MySQL 5.7.37|
+| PHP | e.g. 7.4.21 |
+| Framework CakePHP| e.g. 3.10.2 |
+| IDE | e.g. Visual Studio Code |
 
 ### Testing
 In this section, please list the steps and/ or tools you've used in order to test the behaviour of your solution.
+
+I used Postman in order to test the solution. I created one feature at a time, then tested it to see if it works properly and to correct any errors.
+
 
 ## Feedback
 In this section, please let us know what is your opinion about this experience and how we can improve it:
