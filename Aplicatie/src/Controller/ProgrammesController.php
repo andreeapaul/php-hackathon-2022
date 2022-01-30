@@ -126,11 +126,11 @@ class ProgrammesController extends AppController
                 'fields' => array('Programmes.start', 'Programmes.end')
             ));
     
-            $interval_orar = $this->Programmes->find()
+            $found_programmes = $this->Programmes->find()
             ->select(['start', 'end', 'max_participants', 'no_registered_persons'])
             ->where(['id =' => $programmeID ]);
     
-            $orar = $interval_orar->toArray();
+            $orar = $found_programmes->toArray();
             $start = $orar[0]['start'];
             $end = $orar[0]['end'];
            

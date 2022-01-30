@@ -15,7 +15,7 @@ You have estimated it takes 4 weeks to build this solution. You have 3 days. Goo
 ### Data and Domain model
 In this section, please describe the main entities you managed to identify, the relationships between them and how you mapped them in the database.
 
-For the implementation of the solution I chose to create four tables in the database: admins, programmes, bookings and rooms. There is a one to many relationship between the rooms table and the programmes table, so the programmes table contains a foreign roomID key.
+For the implementation of the solution I chose to create four tables in the database: admins, programmes, bookings and rooms. There is a one to many relationship between the rooms table and the programmes table, so the programmes table contains a foreign roomID key. In addition, the program table contains data on the beginning, end, and maximum number of participants allowed in a programme. 
 There is a one-to-many relationship between the bookings table and the programmes table, because more users can register for each program. Thus, in the bookings table we can find the person's CNP and programmeID.
 
 In the admins table we find a list of admins, each with a random token in the random_token field so that the application knows if the request was sent by an admin or not.
@@ -24,6 +24,10 @@ In the admins table we find a list of admins, each with a random token in the ra
 In this section, please provide a brief overview of the design of your application and highlight the main components and the interaction between them.
 
 The application was made using the CakePHP framework, thus having an MVC structure.
+The Controllers act as an interface between Model and View components to process all the business logic and incoming requests, manipulate data using the Model component and interact with the Views to render the final output. At this time, all methods used in the application are defined in the ProgrammesController. 
+The Model component corresponds to all the data-related logic that the user works with. This can represent either the data that is being transferred between the View and Controller components or any other business logic-related data.
+The View component is used for all the UI logic of the application. This part will be developed in the future, at this moment the application does not have a graphical interface.
+
 ###  Implementation
 ##### Functionalities
 For each of the following functionalities, please tick the box if you implemented it and describe its input and output in your application:
@@ -35,6 +39,14 @@ For each of the following functionalities, please tick the box if you implemente
 
 ##### Business rules
 Please highlight all the validations and mechanisms you identified as necessary in order to avoid inconsistent states and apply the business logic in your application.
+
+The validations that have been made are:
+- The CNP entered by the user when registering for a programme must comply with the rules for forming a CNP in Romania;
+- the same user cannot register to more than one programme in the same time interval;
+- the same room cannot be used at the same time for separate programmes;
+- a program can only be created or deleted by an admin, represented by a specific random token;
+- an user cannot register for a program that has already reached the maximum number of participants allowed.
+
 
 ##### 3rd party libraries (if applicable)
 Please give a brief review of the 3rd party libraries you used and how/ why you've integrated them into your project.
@@ -59,12 +71,20 @@ I used Postman in order to test the solution. I created one feature at a time, t
 In this section, please let us know what is your opinion about this experience and how we can improve it:
 
 1. Have you ever been involved in a similar experience? If so, how was this one different?
+    I have never been involved in such an experience.
 2. Do you think this type of selection process is suitable for you?
+    I think yes, in this way both sides, both me and the employer can figure out if I live up to expectations for this role.
 3. What's your opinion about the complexity of the requirements?
+    I consider that the requirement was of medium complexity and was suitable for an employment test.
 4. What did you enjoy the most?
+    So far, I haven't had a chance to work with REST API, and this way I've researched more and practiced this topic.
 5. What was the most challenging part of this anti hackathon?
+    To work with API, because this is the first time I have the opportunity to write code for an REST API.
 6. Do you think the time limit was suitable for the requirements?
+   Yes, I believe that the requirement could be resolved within the allotted time. 
 7. Did you find the resources you were sent on your email useful?
+    Yes.
 8. Is there anything you would like to improve to your current implementation?
+    Yes, at this moment I am in the exam session and I did not manage to allocate enough time so that the code respects all the rules of good quality code.
 9. What would you change regarding this anti hackathon?
 
